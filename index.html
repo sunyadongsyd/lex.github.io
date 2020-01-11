@@ -350,6 +350,137 @@
 
 
 
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2013-07-08T08:28:32.000Z">2013-07-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 分钟 读完 (大约 3052 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2013/07/08/05Java/01%20log4j%E4%BB%8B%E7%BB%8D/">01 关于log4J的配置</a>
+            
+        </h1>
+        <div class="content">
+            <p>一、介绍<br>Log4j是Apache的一个开放源代码项目，通过使用Log4j，我们可以控制日志信息输送的目的地是控制台、文件、GUI组件、甚至是套接口服务 器、NT的事件记录器、UNIX Syslog守护进程等；我们也可以控制每一条日志的输出格式；通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程。<br>Log4j由三个重要的组件构成：日志信息的优先级，日志信息的输出目的地，日志信息的输出格式。日志信息的优先级从高到低有ERROR、WARN、 INFO、DEBUG，分别用来指定这条日志信息的重要程度；日志信息的输出目的地指定了日志将打印到控制台还是文件中；而输出格式则控制了日志信息的显示内容。 </p>
+<p>二、配置文件<br>其实您也可以完全不使用配置文件，而是在代码中配置Log4j环境。但是，使用配置文件将使您的应用程序更加灵活。<br>Log4j支持两种配置文件格式，一种是XML格式的文件，一种是properties格式的文件。下面我们介绍使用properties格式做为配置文件的方法：<br>示例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger&#x3D;INFO, A1 </span><br><span class="line">log4j.appender.A1&#x3D;org.apache.log4j.ConsoleAppender </span><br><span class="line">log4j.appender.A1.layout&#x3D;org.apache.log4j.PatternLayout </span><br><span class="line">log4j.appender.A1.layout.ConversionPattern&#x3D;%-4r %-5p [%t] %37c %3x - %m%n</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>配置根Logger，其语法为：<br>log4j.rootLogger = [ level ] , appenderName, appenderName, …<br>其中，level 是日志记录的优先级，分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级从高到低分别是ERROR、WARN、INFO、DEBUG。通过在这里定义的级别，您可以控制到应用程序中相应级别的日志信息的开关。比如在这里定义了INFO级别，则应用程序中所有DEBUG级别的日志信息将不被打印出来。<br>appenderName就是指定日志信息输出到哪个地方。您可以同时指定多个输出目的地。 </p>
+</li>
+<li><pre><code>log4j.appender.appenderName = fully.qualified.name.of.appender.class 
+log4j.appender.appenderName.option1 = value1 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   … </span><br><span class="line">   log4j.appender.appenderName.option &#x3D; valueN </span><br><span class="line">   其中，Log4j提供的appender有以下几种： </span><br><span class="line">   org.apache.log4j.ConsoleAppender（控制台）， </span><br><span class="line">   org.apache.log4j.FileAppender（文件）， </span><br><span class="line">   org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件）， </span><br><span class="line">   org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件）， </span><br><span class="line">   org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方） </span><br><span class="line">   (1).ConsoleAppender选项 </span><br><span class="line">   Threshold&#x3D;WARN:指定日志消息的输出最低层次。 </span><br><span class="line">   ImmediateFlush&#x3D;true:默认值是true,意谓着所有的消息都会被立即输出。 </span><br><span class="line">   Target&#x3D;System.err：默认情况下是：System.out,指定输出控制台 </span><br><span class="line">   (2).FileAppender 选项 </span><br><span class="line">   Threshold&#x3D;WARN:指定日志消息的输出最低层次。 </span><br><span class="line">   ImmediateFlush&#x3D;true:默认值是true,意谓着所有的消息都会被立即输出。 </span><br><span class="line">   File&#x3D;mylog.txt:指定消息输出到mylog.txt文件。 </span><br><span class="line">   Append&#x3D;false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。 </span><br><span class="line">   (3).DailyRollingFileAppender 选项 </span><br><span class="line">   Threshold&#x3D;WARN:指定日志消息的输出最低层次。 </span><br><span class="line">   ImmediateFlush&#x3D;true:默认值是true,意谓着所有的消息都会被立即输出。 </span><br><span class="line">   File&#x3D;mylog.txt:指定消息输出到mylog.txt文件。 </span><br><span class="line">   Append&#x3D;false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。 </span><br><span class="line">   DatePattern&#x3D;’.&#39;yyyy-ww:每周滚动一次文件，即每周产生一个新的文件。当然也可以指定按月、周、天、时和分。即对应的格式如下： </span><br><span class="line">    1)’.&#39;yyyy-MM: 每月 </span><br><span class="line">    2)’.&#39;yyyy-ww: 每周 </span><br><span class="line">    3)’.&#39;yyyy-MM-dd: 每天 </span><br><span class="line">    4)’.&#39;yyyy-MM-dd-a: 每天两次 </span><br><span class="line">    5)’.&#39;yyyy-MM-dd-HH: 每小时 </span><br><span class="line">    6)’.&#39;yyyy-MM-dd-HH-mm: 每分钟 </span><br><span class="line">   (4).RollingFileAppender 选项 </span><br><span class="line">   Threshold&#x3D;WARN:指定日志消息的输出最低层次。 </span><br><span class="line">   ImmediateFlush&#x3D;true:默认值是true,意谓着所有的消息都会被立即输出。 </span><br><span class="line">   File&#x3D;mylog.txt:指定消息输出到mylog.txt文件。 </span><br><span class="line">   Append&#x3D;false:默认值是true,即将消息增加到指定文件中，false指将消息覆盖指定的文件内容。 </span><br><span class="line">   MaxFileSize&#x3D;100KB: 后缀可以是KB, MB 或者是 GB. 在日志文件到达该大小时，将会自动滚动，即将原来的内容移到mylog.log.1文件。 </span><br><span class="line">   MaxBackupIndex&#x3D;2:指定可以产生的滚动文件的最大数。 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\3. 配置日志信息的布局，其语法为：</span><br></pre></td></tr></table></figure>
+log4j.appender.appenderName.layout = fully.qualified.name.of.layout.class 
+log4j.appender.appenderName.layout.option1 = value1 
+… 
+log4j.appender.appenderName.layout.option = valueN 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其中，Log4j提供的layout有以下几种： </span><br><span class="line">org.apache.log4j.HTMLLayout（以HTML表格形式布局）， </span><br><span class="line">org.apache.log4j.PatternLayout（可以灵活地指定布局模式）， </span><br><span class="line">org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）， </span><br><span class="line">org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息） </span><br><span class="line"></span><br><span class="line">其中，Log4j提供的layout有以下几种： </span><br><span class="line">org.apache.log4j.HTMLLayout（以HTML表格形式布局）， </span><br><span class="line">org.apache.log4j.PatternLayout（可以灵活地指定布局模式）， </span><br><span class="line">org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）， </span><br><span class="line">org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息） </span><br><span class="line"></span><br><span class="line">4、输出格式设置 </span><br><span class="line">在配置文件中可以通过log4j.appender.A1.layout.ConversionPattern设置日志输出格式。 </span><br><span class="line">参数： </span><br><span class="line">%p: 输出日志信息优先级，即DEBUG，INFO，WARN，ERROR，FATAL, </span><br><span class="line">%d: 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d&#123;yyy MMM dd HH:mm:ss,SSS&#125;，输出类似：2002年10月18日 22：10：28，921 </span><br><span class="line">%r: 输出自应用启动到输出该log信息耗费的毫秒数 </span><br><span class="line">%c: 输出日志信息所属的类目，通常就是所在类的全名 </span><br><span class="line">%t: 输出产生该日志事件的线程名 </span><br><span class="line">%l: 输出日志事件的发生位置，相当于%C.%M(%F:%L)的组合,包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java:10) </span><br><span class="line">%x: 输出和当前线程相关联的NDC(嵌套诊断环境),尤其用到像java servlets这样的多客户多线程的应用中。 </span><br><span class="line">%%: 输出一个”%”字符 </span><br><span class="line">%F: 输出日志消息产生时所在的文件名称 </span><br><span class="line">%L: 输出代码中的行号 </span><br><span class="line">%m: 输出代码中指定的消息,产生的日志具体信息 </span><br><span class="line">%n: 输出一个回车换行符，Windows平台为”\r\n”，Unix平台为”\n”输出日志信息换行 </span><br><span class="line">可以在%与模式字符之间加上修饰符来控制其最小宽度、最大宽度、和文本的对齐方式。如： </span><br><span class="line">1)%20c：指定输出category的名称，最小的宽度是20，如果category的名称小于20的话，默认的情况下右对齐。 </span><br><span class="line">2)%-20c:指定输出category的名称，最小的宽度是20，如果category的名称小于20的话，”-”号指定左对齐。 </span><br><span class="line">3)%.30c:指定输出category的名称，最大的宽度是30，如果category的名称大于30的话，就会将左边多出的字符截掉，但小于30的话也不会有空格。 </span><br><span class="line">4)%20.30c:如果category的名称小于20就补空格，并且右对齐，如果其名称长于30字符，就从左边交远销出的字符截掉。 </span><br><span class="line"></span><br><span class="line">三、在程序中的使用 </span><br><span class="line">在程序中使用Log4j之前，首先要将commons-logging.jar和logging-log4j-1.2.9.jar导入到classpath中，并将log4j.properties放于src根目录中。接下来就可以使用了。</span><br><span class="line"></span><br><span class="line">1.得到记录器 </span><br><span class="line">使用Log4j，第一步就是获取日志记录器，这个记录器将负责控制日志信息。其语法为： </span><br><span class="line">public static Logger getLogger( String name)， </span><br><span class="line">通过指定的名字获得记录器，如果必要的话，则为这个名字创建一个新的记录器。Name一般取本类的名字，比如： </span><br><span class="line">static Logger logger &#x3D; Logger.getLogger ( ServerWithLog4j.class.getName () ) ; </span><br><span class="line">注：推荐使用commons-logging结合log4j进行日志记录 </span><br><span class="line">private static Log logger &#x3D; LogFactory.getLog(Yourclass.class); </span><br><span class="line"></span><br><span class="line">2.插入记录信息（格式化日志信息） </span><br><span class="line">当上两个必要步骤执行完毕，您就可以轻松地使用不同优先级别的日志记录语句插入到您想记录日志的任何地方，其语法如下： </span><br><span class="line">Logger.debug ( Object message ) ; </span><br><span class="line">Logger.info ( Object message ) ; </span><br><span class="line">Logger.warn ( Object message ) ; </span><br><span class="line">Logger.error ( Object message ) ; </span><br><span class="line"></span><br><span class="line">四、Log4j比较全面的配置 </span><br><span class="line">LOG4J的配置之简单使它遍及于越来越多的应用中了：Log4J配置文件实现了输出到控制台、文件、回滚文件、发送日志邮件、输出到数据库日志表、自定义标签等全套功能。择其一二使用就够用了。</span><br></pre></td></tr></table></figure>
+log4j.rootLogger=DEBUG,CONSOLE,A1,im
+log4j.addivity.org.apache=``true
+# 应用于控制台
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+log4j.appender.Threshold=DEBUG
+log4j.appender.CONSOLE.Target=System.out
+log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern=[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n
+#log4j.appender.CONSOLE.layout.ConversionPattern=[start]%d{DATE}[DATE]%n%p[PRIORITY]%n%x[NDC]%n%t[thread] n%c[CATEGORY]%n%m[MESSAGE]%n%n
+#应用于文件
+log4j.appender.FILE=org.apache.log4j.FileAppender
+log4j.appender.FILE.File=file.log
+log4j.appender.FILE.Append=``false
+log4j.appender.FILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.FILE.layout.ConversionPattern=[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n
+# Use ``this` `layout ``for` `LogFactor ``5` `analysis
+# 应用于文件回滚
+log4j.appender.ROLLING_FILE=org.apache.log4j.RollingFileAppender
+log4j.appender.ROLLING_FILE.Threshold=ERROR
+log4j.appender.ROLLING_FILE.File=rolling.log ``//文件位置,也可以用变量${java.home}、rolling.log
+log4j.appender.ROLLING_FILE.Append=``true` `//true:添加 false:覆盖
+log4j.appender.ROLLING_FILE.MaxFileSize=10KB ``//文件最大尺寸
+log4j.appender.ROLLING_FILE.MaxBackupIndex=``1` `//备份数
+log4j.appender.ROLLING_FILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.ROLLING_FILE.layout.ConversionPattern=[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+#应用于socket
+log4j.appender.SOCKET=org.apache.log4j.RollingFileAppender
+log4j.appender.SOCKET.RemoteHost=localhost
+log4j.appender.SOCKET.Port=``5001
+log4j.appender.SOCKET.LocationInfo=``true
+# Set up ``for` `Log Facter ``5
+log4j.appender.SOCKET.layout=org.apache.log4j.PatternLayout
+log4j.appender.SOCET.layout.ConversionPattern=[start]%d{DATE}[DATE]%n%p[PRIORITY]%n%x[NDC]%n%t[thread]%n%c[CATEGORY]%n%m[MESSAGE]%n%n
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+# Log Factor ``5` `Appender
+log4j.appender.LF5_APPENDER=org.apache.log4j.lf5.LF5Appender
+log4j.appender.LF5_APPENDER.MaxNumberOfRecords=``2000
+# 发送日志给邮件
+log4j.appender.MAIL=org.apache.log4j.net.SMTPAppender
+log4j.appender.MAIL.Threshold=FATAL
+log4j.appender.MAIL.BufferSize=``10
+log4j.appender.MAIL.From=web``@www``.wuset.com
+log4j.appender.MAIL.SMTPHost=www.wusetu.com
+log4j.appender.MAIL.Subject=Log4J Message
+log4j.appender.MAIL.To=web``@www``.wusetu.com
+log4j.appender.MAIL.layout=org.apache.log4j.PatternLayout
+log4j.appender.MAIL.layout.ConversionPattern=[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n
+# 用于数据库
+log4j.appender.DATABASE=org.apache.log4j.jdbc.JDBCAppender
+log4j.appender.DATABASE.URL=jdbc:mysql:``//localhost:3306/test
+log4j.appender.DATABASE.driver=com.mysql.jdbc.Driver
+log4j.appender.DATABASE.user=root
+log4j.appender.DATABASE.password=
+log4j.appender.DATABASE.sql=INSERT INTO LOG4J (Message) VALUES (’[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n’)
+log4j.appender.DATABASE.layout=org.apache.log4j.PatternLayout
+log4j.appender.DATABASE.layout.ConversionPattern=[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+log4j.appender.A1=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.A1.File=SampleMessages.log4j
+log4j.appender.A1.DatePattern=yyyyMMdd-HH’.log4j’
+log4j.appender.A1.layout=org.apache.log4j.xml.XMLLayout
+#自定义Appender
+log4j.appender.im = net.cybercorlin.util.logger.appender.IMAppender
+log4j.appender.im.host = mail.cybercorlin.net
+log4j.appender.im.username = username
+log4j.appender.im.password = password
+log4j.appender.im.recipient = corlin``@cybercorlin``.net
+log4j.appender.im.layout=org.apache.log4j.PatternLayout
+log4j.appender.im.layout.ConversionPattern =[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n</code></pre></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 </div>
                 
 
@@ -395,7 +526,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -407,7 +538,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -419,7 +550,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -538,6 +669,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/java/">
+            <span class="level-start">
+                <span class="level-item">java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/tools/">
             <span class="level-start">
                 <span class="level-item">tools</span>
@@ -564,7 +703,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/IT%E6%96%B0%E9%97%BB/" style="font-size: 10px;">IT新闻</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a>
+        <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/IT%E6%96%B0%E9%97%BB/" style="font-size: 10px;">IT新闻</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a>
     </div>
 </div>
     
@@ -653,6 +792,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2013/07/08/05Java/01%20log4j%E4%BB%8B%E7%BB%8D/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="01 关于log4J的配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2013-07-08T08:28:32.000Z">2013-07-08</time></div>
+                    <a href="/2013/07/08/05Java/01%20log4j%E4%BB%8B%E7%BB%8D/" class="title has-link-black-ter is-size-6 has-text-weight-normal">01 关于log4J的配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/java/">java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
         
@@ -697,6 +855,17 @@
             </a>
         </li>
         
+        <li>
+            <a class="level is-marginless" href="/archives/2013/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
         </ul>
         </div>
     </div>
@@ -720,6 +889,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/IT%E6%96%B0%E9%97%BB/">
                         <span class="tag">IT新闻</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/log4j/">
+                        <span class="tag">log4j</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -836,6 +1012,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2013/07/08/05Java/01%20log4j%E4%BB%8B%E7%BB%8D/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="01 关于log4J的配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2013-07-08T08:28:32.000Z">2013-07-08</time></div>
+                    <a href="/2013/07/08/05Java/01%20log4j%E4%BB%8B%E7%BB%8D/" class="title has-link-black-ter is-size-6 has-text-weight-normal">01 关于log4J的配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/java/">java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
     
@@ -880,6 +1075,17 @@
             </a>
         </li>
         
+        <li>
+            <a class="level is-marginless" href="/archives/2013/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
         </ul>
         </div>
     </div>
@@ -903,6 +1109,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/IT%E6%96%B0%E9%97%BB/">
                         <span class="tag">IT新闻</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/log4j/">
+                        <span class="tag">log4j</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
