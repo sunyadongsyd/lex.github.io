@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 192 个字)
+                    8 分钟 读完 (大约 1133 个字)
                 </span>
                 
                 
@@ -164,117 +164,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/01/04/03Go/01go%E5%92%8Cbeego%E5%90%8E%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/">安装 go和beego后的环境变量设置</a>
-            
-        </h1>
-        <div class="content">
-            <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>之前有几次因为环境变量设置的问题 损失了一些时间，特在此做记录</p>
-<h4 id="安装golang"><a href="#安装golang" class="headerlink" title="安装golang"></a>安装golang</h4><ol>
-<li>可参考<a href="https://link.jianshu.com/?t=https://golang.org/doc/install">官方Getting Started</a>，但有时候有问题。</li>
-<li>解压</li>
-</ol>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/01/04/03Go/01go%E5%92%8Cbeego%E5%90%8E%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-04T13:01:45.000Z">2020-01-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Golang/">Golang</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1132 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">安装 go和beego后的环境变量设置</a>
+                <a class="has-link-black-ter" href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">01 安装go和beego后的环境变量设置</a>
             
         </h1>
         <div class="content">
             <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>beego 包含一些示例应用程序以帮您学习并使用 beego 应用框架。</p>
 <p>您需要安装 Go 1.1+ 以确保所有功能的正常使用。</p>
 <p>你需要安装或者升级 Beego 和 <a href="http://beego.me/docs/install/bee.md">Bee</a> 的开发工具:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go get -u github.com&#x2F;astaxie&#x2F;beego</span><br><span class="line">$ go get -u github.com&#x2F;beego&#x2F;bee</span><br></pre></td></tr></table></figure>
-
-<p>为了更加方便的操作，请将 <code>$GOPATH/bin</code> 加入到你的 <code>$PATH</code> 变量中。请确保在此之前您已经添加了 <code>$GOPATH</code> 变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 如果您还没添加 $GOPATH 变量</span><br><span class="line">$ echo &#39;export GOPATH&#x3D;&quot;$HOME&#x2F;go&quot;&#39; &gt;&gt; ~&#x2F;.profile # 或者 ~&#x2F;.zshrc, ~&#x2F;.cshrc, 您所使用的sh对应的配置文件</span><br><span class="line"></span><br><span class="line"># 如果您已经添加了 $GOPATH 变量</span><br><span class="line">$ echo &#39;export PATH&#x3D;&quot;$GOPATH&#x2F;bin:$PATH&quot;&#39; &gt;&gt; ~&#x2F;.profile # 或者 ~&#x2F;.zshrc, ~&#x2F;.cshrc, 您所使用的sh对应的配置文件</span><br><span class="line">$ exec $SHELL</span><br></pre></td></tr></table></figure>
-
-<p>想要快速建立一个应用来检测安装？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd $GOPATH&#x2F;src</span><br><span class="line">$ bee new hello</span><br><span class="line">$ cd hello</span><br><span class="line">$ bee run</span><br></pre></td></tr></table></figure>
-
-<p>Windows 平台下输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;cd %GOPATH%&#x2F;src</span><br><span class="line">&gt;bee new hello</span><br><span class="line">&gt;cd hello</span><br><span class="line">&gt;bee run</span><br></pre></td></tr></table></figure>
-
-<p>这些指令帮助您：</p>
-<ol>
-<li>安装 beego 到您的 $GOPATH 中。</li>
-<li>在您的计算机上安装 Bee 工具。</li>
-<li>创建一个名为 “hello” 的应用程序。</li>
-<li>启动热编译。</li>
-</ol>
-<p>一旦程序开始运行，您就可以在浏览器中打开 <a href="http://localhost:8080/">http://localhost:8080/</a> 进行访问。</p>
-<h2 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h2><p>下面这个示例程序将会在浏览器中打印 “Hello world”，以此说明使用 beego 构建 Web 应用程序是多么的简单！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;github.com&#x2F;astaxie&#x2F;beego&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type MainController struct &#123;</span><br><span class="line">    beego.Controller</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (this *MainController) Get() &#123;</span><br><span class="line">    this.Ctx.WriteString(&quot;hello world&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    beego.Router(&quot;&#x2F;&quot;, &amp;MainController&#123;&#125;)</span><br><span class="line">    beego.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>把上面的代码保存为 hello.go，然后通过命令行进行编译并执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go build -o hello hello.go</span><br><span class="line">$ .&#x2F;hello</span><br></pre></td></tr></table></figure>
-
-<p>这个时候你可以打开你的浏览器，通过这个地址浏览 <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a> 返回 “hello world”。</p>
-<p>那么上面的代码到底做了些什么呢？</p>
-<ol>
-<li>首先我们导入了包 <code>github.com/astaxie/beego</code>。我们知道 Go 语言里面被导入的包会按照深度优先的顺序去执行导入包的初始化（变量和 init 函数，<a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/02.3.md#main函数和init函数">更多详情</a>），beego 包中会初始化一个 BeeAPP 的应用和一些参数。</li>
-<li>定义 Controller，这里我们定义了一个 struct 为 <code>MainController</code>，充分利用了 Go 语言的组合的概念，匿名包含了 <code>beego.Controller</code>，这样我们的 <code>MainController</code> 就拥有了 <code>beego.Controller</code> 的所有方法。</li>
-<li>定义 RESTful 方法，通过匿名组合之后，其实目前的 <code>MainController</code> 已经拥有了 <code>Get</code>、<code>Post</code>、<code>Delete</code>、<code>Put</code> 等方法，这些方法是分别用来对应用户请求的 Method 函数，如果用户发起的是 POST 请求，那么就执行 <code>Post</code> 函数。所以这里我们定义了 <code>MainController</code> 的 <code>Get</code> 方法用来重写继承的 <code>Get</code> 函数，这样当用户发起 GET 请求的时候就会执行该函数。</li>
-<li>定义 main 函数，所有的 Go 应用程序和 C 语言一样都是 main 函数作为入口，所以我们这里定义了我们应用的入口。</li>
-<li>Router 注册路由，路由就是告诉 beego，当用户来请求的时候，该如何去调用相应的 Controller，这里我们注册了请求 <code>/</code> 的时候，请求到 <code>MainController</code>。这里我们需要知道，Router 函数的两个参数函数，第一个是路径，第二个是 Controller 的指针。</li>
-<li>Run 应用，最后一步就是把在步骤 1 中初始化的 BeeApp 开启起来，其实就是内部监听了 8080 端口：Go 默认情况会监听你本机所有的 IP 上面的 8080 端口。</li>
-</ol>
-<p>停止服务的话，请按 <code>Ctrl+c</code>。</p>
-<p>下面为 windows 下的快捷操作批处理文件：<br>在 <code>%GOPATH%/src</code> 目录下分别创建文件 <code>step1.install-bee.bat</code> 和 <code>step2.new-beego-app.bat</code>。</p>
-<p><code>step1.install-bee.bat</code> 文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set GOPATH&#x3D;%~dp0..</span><br><span class="line">go build github.com\beego\bee</span><br><span class="line">copy bee.exe %GOPATH%\bin\bee.exe</span><br><span class="line">del bee.exe</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
-
-<p><code>step2.new-beego-app.bat</code> 文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@echo 设置 App 的值为您的应用文件夹名称</span><br><span class="line">set APP&#x3D;coscms.com</span><br><span class="line">set GOPATH&#x3D;%~dp0..</span><br><span class="line">set BEE&#x3D;%GOPATH%\bin\bee</span><br><span class="line">%BEE% new %APP%</span><br><span class="line">cd %APP%</span><br><span class="line">echo %BEE% run %APP%.exe &gt; run.bat</span><br><span class="line">echo pause &gt;&gt; run.bat</span><br><span class="line">start run.bat</span><br><span class="line">pause</span><br><span class="line">start http:&#x2F;&#x2F;127.0.0.1:8080</span><br></pre></td></tr></table></figure>
-
-<p>依次点击上面创建的两个文件即可快速开启 beego 之旅。<br>以后只需要到您的应用目录下点击 <code>run.bat</code> 即可。</p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -332,7 +238,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            5
+                            4
                         </p>
                     </a>
                 </div>
@@ -464,7 +370,7 @@
                 <span class="level-item">Golang</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/IT%E6%96%B0%E9%97%BB/">
@@ -493,7 +399,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Golang/" style="font-size: 20px;">Golang</a> <a href="/tags/IT%E6%96%B0%E9%97%BB/" style="font-size: 10px;">IT新闻</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a>
+        <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/IT%E6%96%B0%E9%97%BB/" style="font-size: 10px;">IT新闻</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a>
     </div>
 </div>
     
@@ -508,35 +414,16 @@
         
         <article class="media">
             
-            <a href="/2020/01/04/03Go/01go%E5%92%8Cbeego%E5%90%8E%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="安装 go和beego后的环境变量设置">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T13:01:45.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/03Go/01go%E5%92%8Cbeego%E5%90%8E%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" class="title has-link-black-ter is-size-6 has-text-weight-normal">安装 go和beego后的环境变量设置</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Golang/">Golang</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="安装 go和beego后的环境变量设置">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="01 安装go和beego后的环境变量设置">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T13:01:45.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">安装 go和beego后的环境变量设置</a>
+                    <a href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">01 安装go和beego后的环境变量设置</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Golang/">Golang</a>
                     </p>
@@ -618,7 +505,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -661,7 +548,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Golang/">
                         <span class="tag">Golang</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -703,35 +590,16 @@
         
         <article class="media">
             
-            <a href="/2020/01/04/03Go/01go%E5%92%8Cbeego%E5%90%8E%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="安装 go和beego后的环境变量设置">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T13:01:45.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/03Go/01go%E5%92%8Cbeego%E5%90%8E%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/" class="title has-link-black-ter is-size-6 has-text-weight-normal">安装 go和beego后的环境变量设置</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Golang/">Golang</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="安装 go和beego后的环境变量设置">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="01 安装go和beego后的环境变量设置">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T13:01:45.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">安装 go和beego后的环境变量设置</a>
+                    <a href="/2020/01/04/03Go/01%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">01 安装go和beego后的环境变量设置</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Golang/">Golang</a>
                     </p>
@@ -813,7 +681,7 @@
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -856,7 +724,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Golang/">
                         <span class="tag">Golang</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
