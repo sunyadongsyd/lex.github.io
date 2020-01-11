@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://sunyadongsyd.github.io/images/og_image.png">
 <meta property="article:published_time" content="2013-07-08T08:28:32.000Z">
-<meta property="article:modified_time" content="2020-01-11T08:29:23.622Z">
+<meta property="article:modified_time" content="2020-01-11T08:31:11.800Z">
 <meta property="article:author" content="李贝留斯">
 <meta property="article:tag" content="log4j">
 <meta name="twitter:card" content="summary">
@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 分钟 读完 (大约 3050 个字)
+                    20 分钟 读完 (大约 3051 个字)
                 </span>
                 
                 
@@ -166,6 +166,7 @@
         </h1>
         <div class="content">
             <p>一、介绍<br>Log4j是Apache的一个开放源代码项目，通过使用Log4j，我们可以控制日志信息输送的目的地是控制台、文件、GUI组件、甚至是套接口服务 器、NT的事件记录器、UNIX Syslog守护进程等；我们也可以控制每一条日志的输出格式；通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程。<br>Log4j由三个重要的组件构成：日志信息的优先级，日志信息的输出目的地，日志信息的输出格式。日志信息的优先级从高到低有ERROR、WARN、 INFO、DEBUG，分别用来指定这条日志信息的重要程度；日志信息的输出目的地指定了日志将打印到控制台还是文件中；而输出格式则控制了日志信息的显示内容。 </p>
+<a id="more"></a>
 <p>二、配置文件<br>其实您也可以完全不使用配置文件，而是在代码中配置Log4j环境。但是，使用配置文件将使您的应用程序更加灵活。<br>Log4j支持两种配置文件格式，一种是XML格式的文件，一种是properties格式的文件。下面我们介绍使用properties格式做为配置文件的方法：<br>示例： </p>
 <p>log4j.rootLogger=INFO, A1<br>log4j.appender.A1=org.apache.log4j.ConsoleAppender<br>log4j.appender.A1.layout=org.apache.log4j.PatternLayout<br>log4j.appender.A1.layout.ConversionPattern=%-4r %-5p [%t] %37c %3x - %m%n </p>
 <p>配置根Logger，其语法为：<br>   log4j.rootLogger = [ level ] , appenderName, appenderName, …<br>   其中，level 是日志记录的优先级，分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级从高到低分别是ERROR、WARN、INFO、DEBUG。通过在这里定义的级别，您可以控制到应用程序中相应级别的日志信息的开关。比如在这里定义了INFO级别，则应用程序中所有DEBUG级别的日志信息将不被打印出来。<br>   appenderName就是指定日志信息输出到哪个地方。您可以同时指定多个输出目的地。 </p>
